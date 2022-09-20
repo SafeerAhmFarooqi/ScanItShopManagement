@@ -11,6 +11,7 @@ use App\Models\Area;
 use App\Models\Shop;
 use App\Models\RentalCustomer;
 use App\Models\Billing;
+use Illuminate\Support\Carbon;
 
 class AddNewBill extends Component
 {
@@ -18,7 +19,9 @@ class AddNewBill extends Component
     public $selectedFloor='';
     public $selectedShop='';
     public $selectedCustomer='';
-    public $selectedMonths='safeer';
+    public $selectedStartingMonth='';
+    public $selectedEndingMonth='';
+    public $noOfMonths='';
     public $rentAmount='';
     public $collectedRent='';
     public $note='';
@@ -84,6 +87,9 @@ class AddNewBill extends Component
         $floors=Floor::where('area_id',$this->selectedArea)->get();
         $shops=Shop::where('floor_id',$this->selectedFloor)->get();
         $this->selectedCustomer=RentalCustomer::where('shop_id',$this->selectedShop)->first();
+        $this->noOfMonths=$this->selectedStartingMonth&&$this->selectedEndingMonth&&$this->selectedEndingMonth>=$this->selectedStartingMonth
+                          ?Carbon::parse($this->selectedStartingMonth)->diffInMonths(Carbon::parse($this->selectedEndingMonth))+1 
+                          : 0;
         return view('livewire.add-new-bill',[
             'floors' => $floors,
             'shops' => $shops,
