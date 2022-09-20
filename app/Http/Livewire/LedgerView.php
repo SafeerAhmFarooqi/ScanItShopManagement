@@ -16,8 +16,8 @@ use Illuminate\Support\Carbon;
 class LedgerView extends Component
 {
     public $selectedArea='';
-    public $selectedFloor='';
-    public $selectedShop='';
+    public $selectedFloor=[];
+    public $selectedShop=[];
     public $selectedFromDate='';
     public $selectedToDate='';
     public $customerName='';
@@ -416,15 +416,16 @@ class LedgerView extends Component
     {
         $rentalCustomers2=collect();
         $floors=Floor::where('area_id',$this->selectedArea)->get();
-        $shops=Shop::where('floor_id',$this->selectedFloor)->get();
+        $shops=Shop::whereIn('floor_id',$this->selectedFloor)->get();
         $rentalCustomers=RentalCustomer::when($this->selectedArea, function($query) {
             return $query->where('area_id', $this->selectedArea);
         })
             ->when($this->selectedFloor, function($query) {
-                return $query->where('floor_id', $this->selectedFloor);
+                
+                return $query->whereIn('floor_id', $this->selectedFloor);
             })
             ->when($this->selectedShop, function($query) {
-                return $query->where('shop_id', $this->selectedShop);
+                return $query->whereIn('shop_id', $this->selectedShop);
             })
             // ->when($this->selectedFromDate&&$this->selectedToDate, function($query) {
             //     dd($query->first()->id);

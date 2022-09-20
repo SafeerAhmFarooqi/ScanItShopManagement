@@ -25,7 +25,7 @@
                 <div class="my-1 me-4">
                     <!--begin::Select-->
                     <label for="">Shop</label>
-                    <select wire:model="selectedShop" class="form-select form-select-sm form-select-solid w-150px" data-placeholder="Select Mall" data-hide-search="true">
+                    <select wire:model="selectedShop" class="form-select form-select-sm form-select-solid w-150px" data-placeholder="Select Mall" data-hide-search="true" multiple>
                         <option value="" selected="selected">Select Shop</option>
                         @foreach ($shops as $shop)
                         <option  value="{{$shop->id}}">
@@ -38,7 +38,7 @@
                 <div class="my-1 me-4">
                     <!--begin::Select-->
                     <label for="">Floor</label>
-                    <select wire:model="selectedFloor" class="form-select form-select-sm form-select-solid w-150px"  data-placeholder="Select Floor" data-hide-search="true">
+                    <select wire:model="selectedFloor" class="form-select form-select-sm form-select-solid w-150px"  data-placeholder="Select Floor" data-hide-search="true" multiple>
                         <option value="" selected="selected">Select Floor</option>
                         @foreach ($floors as $floor)
                         <option  value="{{$floor->id}}">
@@ -48,6 +48,7 @@
                     </select>
                     <!--end::Select-->
                 </div>
+                
                 <div class="my-1 me-4">
                     <!--begin::Select-->
                     <label for="">Mall - {{$selectedArea}}</label>
