@@ -126,6 +126,7 @@
                             </div>
     
                             <div class="row mb-6" wire:ignore >
+                                
                                 <!--begin::Label-->
                                  <label class="col-lg-4 col-form-label fw-semibold fs-6"><span class="required">Pick Month</span> <i aria-label="Country of origination" class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" data-kt-initialized="1"></i></label> <!--end::Label-->
                                  <!--begin::Col-->
@@ -134,6 +135,7 @@
                                         <div id="mmp" wire:click="getMonths"></div>
                                         {{-- <button id="ok">OK</button> --}}
                                     </div>
+                             
 
                                     {{-- @error('rentAmount')
                                     <span class="alert alert-danger" role="alert">
@@ -235,9 +237,9 @@
 @endsection
 
 @section('pageScripts')
-{{-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	 --}}
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-<script src="{{asset('assets/datepicker/jqm-mmp.js')}}"></script>
+    <script src="{{asset('assets/datepicker/jqm-mmp.js')}}"></script>
 
 	<script>
 	$(document).ready(function() {
