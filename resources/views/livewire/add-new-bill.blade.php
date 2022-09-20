@@ -232,52 +232,122 @@
     </div>
 </div>
 
-@section('pageStyles')
-<link href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" rel="stylesheet" type="text/css" />
-@endsection
+
 @push('scriptsWithLivewire')
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-<script src="{{asset('assets/datepicker/jqm-mmp.js')}}"></script>
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        $(document).ready(function() {
-        
-       
-        $('#mmp').mmp();
+    
+    <script>
+        document.addEventListener('livewire:load', function() {
+            (function ($, window, document, undefined) {
+    $.widget("mobile.mmp", $.mobile.widget, {
+        options:{
+            text:'Multiple Month Picker',
+            theme:'a',
+            id:'mmp',
+			months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+			value: []
+        },
+		value: function (value) {
+			if ( value === undefined ) {
+				return this.options.value;
+			}
+	 
+			this.options.value = value;
+			this._values = ',' + value.join(',') + ',';
+			this._check();
+		},
+		_currentYear: (new Date()).getFullYear(),
+		_values : ',',
+		_check: function() {
+			var that = this;
+			this.element.find('input').each(function() {
+				if(that._values.indexOf(',' + $(this).val() + ',') >= 0) {
+					$(this).prop('checked', true).checkboxradio('refresh');
+				} else {
+					$(this).prop('checked', false).checkboxradio('refresh');
+				}
+			});
+		},
+        _create:function () {
+            this.element.css('text-align', 'center');
+			
+			this.element.append('<div id="mmp-header" data-role="controlgroup" data-type="horizontal"></div>');
+			this.element.children('div').append('<button id="btnPreviousYear" data-iconpos="notext" data-icon="arrow-l">Previous year</button>');
+			this.element.children('div').append('<button id="yearLabel" style="width: 150px;">' + this._currentYear + '</button>');
+			this.element.children('div').append('<button id="btnNextYear" data-iconpos="notext" data-icon="arrow-r">Next year</button>');
+			
+			for(var i=0; i<4; i++) {
+				this.element.append('<fieldset id="mmp-months-row-' + i + '" data-role="controlgroup" data-type="horizontal"></fieldset>');
+				for(var j=0; j<3; j++) {
+					var month = this._currentYear + '-' + this._zeros(1 + j + 3*i, 2);
+					this.element.find('#mmp-months-row-' + i).append('<input type="checkbox" name="' + month + '" id="' + month + '" value="' + month + '" data-wrapper-class="mmp-month" />');
+					this.element.find('#mmp-months-row-' + i).append('<label for="' + month + '" style="width: text-align: center;">' + this.options.months[j + 3*i] + '</label>');
+				}
+			}
+			
+			$('<style>.mmp-month { width: 100px; }</style>').appendTo('head');
+			$('<style>.mmp-month > label { text-align: center; }</style>').appendTo('head');
+			
+			$('body').trigger('create');
+			
+			var that = this;
+			
+			this.element.find('#btnPreviousYear').click(function() {
+				that._currentYear--;
+				that.element.html('');
+				that._create();
+			});
+			
+			this.element.find('#btnNextYear').click(function() {
+				that._currentYear++;
+				that.element.html('');
+				that._create();
+			});
+			
+			this.element.children('fieldset').find('label').css('text-align', 'center');
+			this.element.children('fieldset').find('input').click(function() {
+				var value = $(this).val();
+				if($(this).is(':checked')) {
+					if(that._values.indexOf(',' + value + ',') < 0) {
+						that._values += value + ',';
+					}
+				} else {
+					if(that._values.indexOf(',' + value + ',') >= 0) {
+						that._values = that._values.replace(',' + value + ',', ',');
+					}
+				}
+				if(that._values == ',') {
+					that.options.value = [];
+				} else {
+					that.options.value = that._values.substring(1, that._values.length - 1).split(',');
+					that.options.value.sort();
+				}
+			});
+			
+			this._check();
+        },
+		_zeros: function(text, size) {
+			var temp = text + '';
+			while(temp.length < size) {
+				temp = '0' + temp;
+			}
+			return temp;
+		}
+    });
+})(jQuery, window, document);
 
-		
-       
-	});
-	
-    })
-</script>
-@endpush
-@section('pageScripts')
+
+$(document).ready(function() {
+        
+    $('#mmp').mmp();
 
     
    
-        
-	{{-- <script>
-	$(document).ready(function() {
-        
-        //alert('safeer');
-        $('#mmp').mmp();
+});
 
-		// $('#ok').click(function () {
-		// 	alert($('#mmp').mmp('value'));
-        //     const fruits = $('#mmp').mmp('value');
-        //     let text = fruits.toString();
-        //     @this.set('selectedMonths', text);
-
-		// });
-
-		// $('#load').click(function () {
-		// 	$('#mmp').mmp('value', ['2014-01', '2014-05', '2014-08']);
-		// });
-       
-	});
-	</script> --}}
+        });
+    </script>
 
 <script> 
     window.addEventListener('getCalendar', event => {
@@ -288,47 +358,9 @@
          var monthsCalculation=$('#mmp').mmp('value');
            @this.set('selectedMonths', monthsCalculation.length);  
 //alert(monthsCalculation);
-
 })
-</script>  
-
-
-    
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        Livewire.hook('component.initialized', (component) => {
-           // alert('alert 1');
-        })
-        Livewire.hook('element.initialized', (el, component) => {
-          //  alert('alert 2');
-        })
-        Livewire.hook('element.updating', (fromEl, toEl, component) => {
-           // alert('alert 3');
-        })
-        Livewire.hook('element.updated', (el, component) => {
-           // alert('alert 4');
-        })
-        Livewire.hook('element.removed', (el, component) => {
-          //  alert('alert 5');
-        })
-        Livewire.hook('message.sent', (message, component) => {
-           // alert('alert 6');
-        })
-        Livewire.hook('message.failed', (message, component) => {
-          //  alert('alert 7');
-        })
-        Livewire.hook('message.received', (message, component) => {
-            //alert('alert 8');
-        })
-        Livewire.hook('message.processed', (message, component) => {
-           // alert('alert 9');
-           
-           
-        })
-    });
-</script>
-@endsection
-
+</script> 
+    <link href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" rel="stylesheet" type="text/css" />
+@endpush
 
 
