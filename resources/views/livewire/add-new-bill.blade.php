@@ -237,10 +237,22 @@
 @endsection
 
 @section('pageScripts')
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+         
+           
+            <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="{{asset('assets/datepicker/jqm-mmp.js')}}"></script>
-
+           
+        
+            document.addEventListener('livewire:update', function () {
+               
+            })
+        })
+        </script>
+        
 	<script>
 	$(document).ready(function() {
         
