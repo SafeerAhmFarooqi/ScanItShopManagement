@@ -236,24 +236,17 @@
 <link href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" rel="stylesheet" type="text/css" />
 @endsection
 @push('scriptsWithLivewire')
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<script src="{{asset('assets/datepicker/jqm-mmp.js')}}"></script>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
         $(document).ready(function() {
         
-        //alert('safeer');
+       
         $('#mmp').mmp();
 
-		// $('#ok').click(function () {
-		// 	alert($('#mmp').mmp('value'));
-        //     const fruits = $('#mmp').mmp('value');
-        //     let text = fruits.toString();
-        //     @this.set('selectedMonths', text);
-
-		// });
-
-		// $('#load').click(function () {
-		// 	$('#mmp').mmp('value', ['2014-01', '2014-05', '2014-08']);
-		// });
+		
        
 	});
 	
@@ -261,21 +254,9 @@
 </script>
 @endpush
 @section('pageScripts')
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
-<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-    <script src="{{asset('assets/datepicker/jqm-mmp.js')}}"></script>
-    <script>
-        document.addEventListener('livewire:load', function () {
-         
-           
-            
-           
-        
-            document.addEventListener('livewire:update', function () {
-               
-            })
-        })
-        </script>
+
+    
+   
         
 	{{-- <script>
 	$(document).ready(function() {
