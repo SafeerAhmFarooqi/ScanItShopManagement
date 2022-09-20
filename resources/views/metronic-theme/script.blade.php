@@ -12,5 +12,7 @@
 
     
 @show
-@livewireScripts
 @yield('pageScripts')
+@livewireScripts
+@stack('scriptsWithLivewire')
+
