@@ -59,7 +59,7 @@ class AddNewBill extends Component
             'shop_id'=>$this->selectedShop,
             'customer_id'=>$this->selectedCustomer->id,
             'rentamount'=>$this->collectedRent,
-            'noofmonths'=>$this->selectedMonths,
+            'noofmonths'=>$this->noOfMonths,
             'note'=>$this->note,
         ]);
 
