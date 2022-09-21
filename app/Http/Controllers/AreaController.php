@@ -25,7 +25,7 @@ class AreaController extends AdminController
      */
     public function create()
     {
-        //
+        return view('area-listing-page');
     }
 
     /**

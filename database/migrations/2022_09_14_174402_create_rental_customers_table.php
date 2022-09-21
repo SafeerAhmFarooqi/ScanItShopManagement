@@ -18,11 +18,13 @@ return new class extends Migration
             $table->unsignedBigInteger('area_id')->nullable();
             $table->unsignedBigInteger('floor_id')->nullable();
             $table->unsignedBigInteger('shop_id')->nullable();
+            $table->boolean('status')->nullable();
             $table->string('name')->nullable();
             $table->string('phonenumber')->nullable();
             $table->decimal('advancepayment')->nullable();
             $table->decimal('cutoffpayment')->nullable();
             $table->text('note')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
