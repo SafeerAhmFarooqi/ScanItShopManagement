@@ -79,6 +79,15 @@
                                 <span class="menu-title">Add New Area/Mall</span>
                             </a>
                         </div>
+
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{route('app.area.create')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Area/Mall Listing</span>
+                            </a>
+                        </div>
                         
                     </div>
                 </div>

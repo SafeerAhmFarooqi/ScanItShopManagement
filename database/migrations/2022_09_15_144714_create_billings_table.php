@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('rentamount')->nullable();
             $table->string('noofmonths')->nullable();
             $table->text('note')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

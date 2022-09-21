@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('area', function (Blueprint $table) {
             $table->id();
             $table->string('area')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
