@@ -45,7 +45,9 @@ class SalesReportController extends AdminController
      */
     public function show($id)
     {
-        //
+        if ($id==1) {
+            return view('customer-monthly-report-page');
+        }
     }
 
     /**

@@ -245,6 +245,15 @@
                                 <span class="menu-title">Ledger View</span>
                             </a>
                         </div>
+
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{route('app.salesreport.show',[1])}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Customer Monthly Report</span>
+                            </a>
+                        </div>
                         
                     </div>
                 </div>
