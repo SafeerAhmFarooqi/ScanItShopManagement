@@ -12,4 +12,9 @@ class Billing extends Model
     protected $table = 'billings';
 
     protected $fillable = ['area_id','floor_id','shop_id','customer_id','rentamount','noofmonths','note'];
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class, 'shop_id');
+    }
 }
