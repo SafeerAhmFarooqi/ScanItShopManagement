@@ -104,16 +104,39 @@ class CreateExpanseGroup extends Component
     {
         $this->selectedExpanseGroup=$id;
 
-        $this->editExpanseGroup=ExpanseGroup::findOrFail($id);
+        $this->editExpanseGroup=ExpanseGroup::find($id);
 
         $this->editGroupName=$this->editExpanseGroup->name;
         $this->editGroupDescription=$this->editExpanseGroup->description;
+    }
+
+    public function deleteExpanseGroup($id)
+    {
+        $this->selectedExpanseGroup=$id;
+
+        $expanseGroup=ExpanseGroup::find($id);
+
+        $this->editGroupName=$expanseGroup->name;
+    }
+
+    public function submitDelete()
+    {
+
+        $result=ExpanseGroup::find($this->selectedExpanseGroup)->delete();
+        $this->dispatchBrowserEvent('hideModel');
+        if($result) {
+            $this->resetForm();
+            Session::flash('error', __('Expanse Group Deleted Successfully'));
+        } else {
+            Session::flash('error', __('Unable to Update Expense Group'));
+        }
     }
 
     public function resetForm()
     {
         $this->groupName='';
         $this->groupDescription='';
+        $this->selectedExpanseGroup='';
         $this->editGroupName='';
         $this->editGroupDescription='';
     }
