@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Expense;
 
 class ExpanseController extends AdminController
 {
@@ -49,9 +50,15 @@ class ExpanseController extends AdminController
             case "1":
               return view('expense-create-group-page');
               break;
-              case "2":
+            case "2":
                 return view('expense-create-page');
                 break;
+            case "3":
+
+                    return view('expense-list-page',[
+                        'expenses' => Expense::all(),
+                    ]);
+                    break;
             default:
               return back();
           }

@@ -13,4 +13,9 @@ class Expense extends Model
 
     protected $fillable = ['expensegroup_id',  'head', 'rate', 'quantity', 'amount','dateofexpense'];
 
+    public function group()
+    {
+        return $this->belongsTo(ExpanseGroup::class, 'expensegroup_id');
+    }
+
 }
