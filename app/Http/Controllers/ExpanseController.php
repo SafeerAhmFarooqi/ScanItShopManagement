@@ -49,6 +49,9 @@ class ExpanseController extends AdminController
             case "1":
               return view('expense-create-group-page');
               break;
+              case "2":
+                return view('expense-create-page');
+                break;
             default:
               return back();
           }
