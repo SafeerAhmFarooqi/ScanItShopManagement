@@ -306,6 +306,15 @@
                                 <span class="menu-title">Expanse List</span>
                             </a>
                         </div>
+
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{route('app.expanse.show',[4])}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Expanse Report</span>
+                            </a>
+                        </div>
                         
                     </div>
 

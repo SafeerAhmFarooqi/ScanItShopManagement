@@ -80,6 +80,10 @@ class ExpanseController extends AdminController
                         'expenses' => Expense::all(),
                     ]);
                     break;
+                    case "4":
+
+                        return view('expense-report-page');
+                        break;
             default:
               return back();
           }
