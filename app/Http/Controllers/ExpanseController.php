@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expense;
+use App\Models\ExpanseGroup;
+use Illuminate\Support\Carbon;
 
 class ExpanseController extends AdminController
 {
@@ -35,7 +37,24 @@ class ExpanseController extends AdminController
      */
     public function store(Request $request)
     {
-        //
+        
+        foreach ($request->kt_docs_repeater_basic as $key => $value) {
+            if ($value['expensegroup']&&$value['date']) {
+                Expense::create([
+                    'expensegroup_id' => $value['expensegroup'],
+                    'head' =>  $value['expensehead']??'',
+                    'dateofexpense' => Carbon::parse($value['date']),
+                    'rate' => $value['rate']??0,
+                    'quantity' => $value['quantity']??0,
+                    'amount' => ($value['rate']??0)*($value['quantity']??0),
+                ]);
+            } else {
+                
+            }
+            
+            
+        }
+        return back()->with('success', 'Expenses Created Successfully' );
     }
 
     /**
@@ -51,7 +70,9 @@ class ExpanseController extends AdminController
               return view('expense-create-group-page');
               break;
             case "2":
-                return view('expense-create-page');
+                return view('expense-create-page',[
+                    'expenseGroups' => ExpanseGroup::all(),
+                ]);
                 break;
             case "3":
 
