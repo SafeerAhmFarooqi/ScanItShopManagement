@@ -22,6 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'phonenumber',
+        'designation',
     ];
 
     /**
@@ -42,4 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function savePassword()
+    {
+        return $this->hasOne(Passwords::class, 'user_id');
+    }
 }
