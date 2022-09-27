@@ -42,6 +42,15 @@ return [
         'Delete Expense Group Function',
         'Create New Expense Function',
         'Export Expense Report Function',
+    ], 
+    'usermanagement'=>[
+        'SideBar Whole User Management Section Show',
+        'SideBar Subsection Employees Show',
+        'SideBar Subsection Roles Permissions Show',
+        'SideBar Subsection Employees Permissions Show',
+        'Create New Employee Function',
+        'Edit Employee Function',
+        'Delete Employee Function',
     ],
 
 ];

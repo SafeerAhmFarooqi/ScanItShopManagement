@@ -8,6 +8,7 @@ use App\Http\Controllers\RentalCustomerController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\SalesReportController;
 use App\Http\Controllers\ExpanseController;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::name('app.')->prefix("shop-management")->middleware(['auth'])->group(func
     Route::resource('billing', BillingController::class);
     Route::resource('salesreport', SalesReportController::class);
     Route::resource('expanse', ExpanseController::class);
+    Route::resource('usermanagement', UserManagementController::class);
 });
 
 
