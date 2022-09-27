@@ -54,6 +54,7 @@
                     </div>
                 </div>
 
+                @can('SideBar Whole Area Section Show')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -71,6 +72,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('SideBar Subsection Add New Area Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.area.index')}}">
                                 <span class="menu-bullet">
@@ -79,7 +81,9 @@
                                 <span class="menu-title">Add New Area/Mall</span>
                             </a>
                         </div>
-
+                        @endcan
+                       
+                        @can('SideBar Subsection Listing Area Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.area.create')}}">
                                 <span class="menu-bullet">
@@ -87,11 +91,16 @@
                                 </span>
                                 <span class="menu-title">Area/Mall Listing</span>
                             </a>
-                        </div>
+                        </div>    
+                        @endcan
+                        
                         
                     </div>
                 </div>
+                @endcan
 
+                
+                @can('SideBar Whole Floor Section Show')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -109,6 +118,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('SideBar Subsection Add New Floor Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.floor.index')}}">
                                 <span class="menu-bullet">
@@ -116,11 +126,15 @@
                                 </span>
                                 <span class="menu-title">Add New Floor</span>
                             </a>
-                        </div>
+                        </div>    
+                        @endcan
+                        
                         
                     </div>
                 </div>
-
+                @endcan
+                
+                @can('SideBar Whole Shop Section Show')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -138,6 +152,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('SideBar Subsection Add New Shop Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.shop.index')}}">
                                 <span class="menu-bullet">
@@ -146,10 +161,14 @@
                                 <span class="menu-title">Add New Shop</span>
                             </a>
                         </div>
+                        @endcan
+                       
                         
                     </div>
                 </div>
-
+                @endcan
+               
+                @can('SideBar Whole Rental Customer Section Show')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -167,6 +186,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('SideBar Subsection Add New Rental Customer Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.rentalcustomer.index')}}">
                                 <span class="menu-bullet">
@@ -174,11 +194,15 @@
                                 </span>
                                 <span class="menu-title">Add New Rental Customer</span>
                             </a>
-                        </div>
+                        </div>    
+                        @endcan
+                        
                         
                     </div>
                 </div>
-
+                @endcan
+               
+                @can('SideBar Whole Accounts Section Show')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -196,6 +220,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('SideBar Subsection Add New Bill Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.billing.index')}}">
                                 <span class="menu-bullet">
@@ -203,11 +228,16 @@
                                 </span>
                                 <span class="menu-title">Add New Bill</span>
                             </a>
-                        </div>
+                        </div>    
+                        @endcan
+                        
                         
                     </div>
                 </div>
-
+                @endcan
+                
+                @can('SideBar Whole Reports Section Show')
+                    
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -225,6 +255,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('SideBar Subsection Sales Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.salesreport.index')}}">
                                 <span class="menu-bullet">
@@ -232,11 +263,14 @@
                                 </span>
                                 <span class="menu-title">Sales</span>
                             </a>
-                        </div>
+                        </div>    
+                        @endcan
+                        
                         
                     </div>
 
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('SideBar Subsection Ledger View Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.salesreport.create')}}">
                                 <span class="menu-bullet">
@@ -245,7 +279,9 @@
                                 <span class="menu-title">Ledger View</span>
                             </a>
                         </div>
-
+                        @endcan
+                       
+                        @can('SideBar Subsection Customer Monthly Report Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.salesreport.show',[1])}}">
                                 <span class="menu-bullet">
@@ -254,12 +290,17 @@
                                 <span class="menu-title">Customer Monthly Report</span>
                             </a>
                         </div>
+                        @endcan
+                       
                         
                     </div>
 
                   
                 </div>
-
+                    
+                @endcan
+                
+                @can('SideBar Whole Expense Section Show')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -276,7 +317,9 @@
                         <span class="menu-title">Expanse</span>
                         <span class="menu-arrow"></span>
                     </span>
+
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('SideBar Subsection Create Group Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.expanse.show',[1])}}">
                                 <span class="menu-bullet">
@@ -285,10 +328,8 @@
                                 <span class="menu-title">Create Group</span>
                             </a>
                         </div>
-                        
-                    </div>
-
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @endcan
+                        @can('SideBar Subsection Create Expanse Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.expanse.show',[2])}}">
                                 <span class="menu-bullet">
@@ -297,7 +338,9 @@
                                 <span class="menu-title">Create Expanse</span>
                             </a>
                         </div>
-
+                        @endcan
+                       
+                        @can('SideBar Subsection Expense List Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.expanse.show',[3])}}">
                                 <span class="menu-bullet">
@@ -306,7 +349,9 @@
                                 <span class="menu-title">Expanse List</span>
                             </a>
                         </div>
-
+                        @endcan
+                       
+                        @can('SideBar Subsection Expense Report Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.expanse.show',[4])}}">
                                 <span class="menu-bullet">
@@ -315,11 +360,15 @@
                                 <span class="menu-title">Expanse Report</span>
                             </a>
                         </div>
+                        @endcan
+                       
                         
                     </div>
 
                   
                 </div>
+                @endcan
+                
 
                
 
