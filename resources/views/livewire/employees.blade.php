@@ -7,7 +7,7 @@
                 <span class="card-label fw-bolder fs-3 mb-1">Employees</span>
                 <span class="text-muted mt-1 fw-bold fs-7">{{$employees->count()}} Employees</span>
             </h3>
-            @can('Create New Expense Group Function')
+            @can('Create New Employee Function')
             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" >
                 <div class="me-10">
                     <input wire:model="search" type="text" class="form-control form-control-sm form-control-solid" placeholder="Search" title="Type to Search"/>
@@ -20,7 +20,7 @@
                         <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
                     </svg>
                 </span>
-                <!--end::Svg Icon-->New Group</a>
+                <!--end::Svg Icon-->New Employee</a>
             </div>
             @endcan
            
@@ -142,7 +142,7 @@
                         
                             <td>
                                 <div class="d-flex justify-content-end flex-shrink-0">
-                                   @can('Edit Expense Group Function')
+                                   @can('Edit Employee Function')
                                    <a href="javascript:;" wire:click="getEmployee({{$employee->id}})" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends_update">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -154,7 +154,7 @@
                                     <!--end::Svg Icon-->
                                 </a>
                                    @endcan
-                                    @can('Delete Expense Group Function')
+                                    @can('Delete Employee Function')
                                     <a href="javascript:;" wire:click="deleteEmployee({{$employee->id}})" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends_delete">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                         <span class="svg-icon svg-icon-3">

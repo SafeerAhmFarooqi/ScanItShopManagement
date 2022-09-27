@@ -47,6 +47,7 @@
                     </a>
 
                 </div>
+                @can('SideBar Whole User Management Section Show')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -64,7 +65,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
-
+                        @can('SideBar Subsection Employees Show')
                         <div class="menu-item">
                             <a class="menu-link" href="{{route('app.usermanagement.show',[1])}}">
                                 <span class="menu-bullet">
@@ -73,20 +74,37 @@
                                 <span class="menu-title">Employees</span>
                             </a>
                         </div>    
-                    
+                        @endcan
+                            
+                        @can('SideBar Subsection Roles Permissions Show')
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{route('app.usermanagement.show',[2])}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Assign Permissions To Roles</span>
+                                <span class="menu-title">Role's Permissions</span>
                             </a>
                         </div>    
+                        @endcan
+                            
+                        @can('SideBar Subsection Employees Permissions Show')
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{route('app.usermanagement.show',[3])}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Employee's Permissions</span>
+                            </a>
+                        </div>    
+                        @endcan
+                     
                         
                         
                         
                     </div>
                 </div>
+                @endcan
+               
 
                 <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
@@ -436,7 +454,7 @@
     <!--end::Aside menu-->
     <!--begin::Footer-->
     <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
-        <a href="/" class="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="">
+        {{-- <a href="/" class="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="">
             <span class="btn-label">Landing Page</span>
             <!--begin::Svg Icon | path: icons/duotune/general/gen005.svg-->
             <span class="svg-icon btn-icon svg-icon-2">
@@ -449,7 +467,7 @@
                 </svg>
             </span>
             <!--end::Svg Icon-->
-        </a>
+        </a> --}}
     </div>
     <!--end::Footer-->
 </div>

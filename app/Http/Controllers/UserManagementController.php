@@ -50,14 +50,14 @@ class UserManagementController extends AdminController
               return view('user-management-employees-page');
               break;
             case "2":
-                return view('expense-create-page',[
-                    'expenseGroups' => ExpanseGroup::all(),
+                return view('user-management-roles-permission-page',[
+
                 ]);
                 break;
             case "3":
 
-                    return view('expense-list-page',[
-                        'expenses' => Expense::all(),
+                    return view('user-management-employees-permission-page',[
+ 
                     ]);
                     break;
                     case "4":
