@@ -51,10 +51,15 @@
                             <td>{{$area->id}}</td>
                             <td> {{$area->area}} </td>
                             <td>
+                                @can('Delete Area Function')
                                 <a href="javascript:;" wire:click="$set('selectedArea', {{$area->id}})" class="btn btn-danger" type="reset"  data-bs-toggle="modal" data-bs-target="#kt_modal_delete">Delete</a>
+                                @endcan
+                                @can('Edit Area Function')
                                 <span wire:click="getArea">
                                     <a href="javascript:;" wire:click="$set('selectedArea', {{$area->id}})"  class="btn btn-primary" type="reset" data-bs-toggle="modal" data-bs-target="#kt_modal_update">Edit</a>
-                                </span>
+                                </span>    
+                                @endcan
+                                
                                 
                             </td>
                           
